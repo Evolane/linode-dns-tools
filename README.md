@@ -1,6 +1,8 @@
 # linode-dns-tools
+A tool collection based on the previous api v3  [github](http://github.com/punkave/linode-dns-tools) was adapted to api v4 for creating and importing a DNS domain from an DNS zone export file [github](https://github.com/Evolane/linode-dns-tools ).
 
-<a href="http://evolane.eu/"><img src="https://raw.github.com/punkave/linode-dns-tools/master/logos/logo-box-madefor.png" align="right" /></a>
+
+<a href="http://evolane.eu/"><img src="https://github.com/Evolane/linode-dns-tools/master/logos/logo-evolane.png" align="right" /></a>
 
 A collection of tools for the [linode DNS API](https://www.linode.com/api/dns).
 
@@ -19,6 +21,7 @@ npm install -g linode-dns-tools
 ## linode-import-zone-file
 
 Imports bind-style DNS zone files via the Linode API. Very useful if you've exported one from another hosting service that won't allow Linode's automatic zone export feature.
+This is the case for most cloud services.
 
 ### Usage
 
@@ -64,10 +67,10 @@ Currently does not support record types that require more than just a name and t
 
 ## About P'unk Avenue and Apostrophe
 
-`linode-dns-tools` was created at [P'unk Avenue](http://punkave.com) to support our work on Apostrophe, an open-source content management system built on node.js. If you like `linode-dns-tools` you should definitely [check out apostrophenow.org](http://apostrophenow.org). Also be sure to visit us on [github](http://github.com/punkave).
+`linode-dns-tools` was created at [Evolane](http://evolane.eu) to support our work on Evolane, an open-source content management system built on node.js. If you like `linode-dns-tools` you should definitely [check out evolane.eu](http://evolane.eu). 
 
 ## Support
 
-Feel free to open issues on [github](http://github.com/punkave/linode-dns-tools).
+Feel free to open issues on [github](https://github.com/Evolane/linode-dns-tools/master/logos/logo-evolane.png).
 
-<a href="http://punkave.com/"><img src="https://raw.github.com/punkave/linode-dns-tools/master/logos/logo-box-builtby.png" /></a>
+<a href="http://evolane.eu/"><img src="https://github.com/Evolane/linode-dns-tools/master/logos/logo-evolane.png" /></a>
