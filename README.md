@@ -2,7 +2,8 @@
 A tool collection based on the previous api v3  [github](http://github.com/punkave/linode-dns-tools) was adapted to api v4 for creating and importing a DNS domain from an DNS zone export file [github](https://github.com/Evolane/linode-dns-tools ).
 
 
-<a href="http://evolane.eu/"><img src="https://github.com/Evolane/linode-dns-tools/master/logos/logo-evolane.png" align="right" /></a>
+
+<a href="http://evolane.eu/"><img src="https://github.com/Evolane/linode-dns-tools/blob/main/logos/logo-evolane.png" align="right" /></a>
 
 A collection of tools for the [linode DNS API](https://www.linode.com/api/dns).
 
@@ -37,35 +38,8 @@ Note that if an error is reported, no records beyond that point are imported.
 
 Runs quietly if nothing is wrong. Use `--verbose` for detailed output.
 
-## linode-change-ip
 
-Globally replace an IP address in all of your domains, or one particular domain. Very useful when you replace a server.
-
-### Usage
-
-```
-linode-change-ip --old=1.1.1.1 --new=2.2.2.2
-```
-
-Optionally you can do this for just one domain:
-
-```
-linode-change-ip --old=1.1.1.1 --new=2.2.2.2 --domain=mycompany.com
-```
-
-Runs quietly if nothing is wrong. Use `--verbose` for detailed output.
-
-## linode-add-record
-
-A simple utility to add a new record.
-
-```
-linode-add-record --domain=foo.com --type=a --name=bar --target=1.2.3.4
-```
-
-Currently does not support record types that require more than just a name and target. Pull requests always welcome.
-
-## About P'unk Avenue and Apostrophe
+## About Evolane
 
 `linode-dns-tools` was created at [Evolane](http://evolane.eu) to support our work on Evolane, an open-source content management system built on node.js. If you like `linode-dns-tools` you should definitely [check out evolane.eu](http://evolane.eu). 
 
@@ -73,4 +47,4 @@ Currently does not support record types that require more than just a name and t
 
 Feel free to open issues on [github](https://github.com/Evolane/linode-dns-tools/master/logos/logo-evolane.png).
 
-<a href="http://evolane.eu/"><img src="https://github.com/Evolane/linode-dns-tools/master/logos/logo-evolane.png" /></a>
+<a href="http://evolane.eu/"><img src="https://github.com/Evolane/linode-dns-tools/blob/main/logos/logo-evolane.png" /></a>
