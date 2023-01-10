@@ -1,0 +1,12 @@
+akamai.test. 300 IN A 2.17.196.88
+akamai.test. 300 IN A 2.17.196.107
+akamai.test. 300 IN MX 1 aspmx.l.google.com.
+akamai.test. 300 IN MX 5 alt1.aspmx.l.google.com.
+akamai.test. 21600 IN NS ns-cloud-d1.googledomains.com.
+akamai.test. 21600 IN NS ns-cloud-d2.googledomains.com.
+akamai.test. 21600 IN NS ns-cloud-d3.googledomains.com.
+akamai.test. 21600 IN NS ns-cloud-d4.googledomains.com.
+akamai.test. 21600 IN SOA ns-cloud-d1.googledomains.com. cloud-dns-hostmaster.google.com. 1 21600 3600 259200 300
+akamai.test. 300 IN TXT "MS=ms72154044"
+_acme-challenge.akamai.test. 300 IN TXT "gfQu7C7xf9q3iIIUdViFCkUKywQ-lqkIL4wOo_4Gevg"
+www.akamai.test. 300 IN CNAME evolane-ops.edgekey.net.

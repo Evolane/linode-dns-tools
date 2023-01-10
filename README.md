@@ -5,15 +5,16 @@ A tool collection based on the previous api v3  [github](http://github.com/punka
 
 <a href="http://evolane.eu/"><img src="https://github.com/Evolane/linode-dns-tools/blob/main/logos/logo-evolane.png" align="right" /></a>
 
-A collection of tools for the [linode DNS API](https://www.linode.com/api/dns).
+A collection of tools for the [linode DNS API](https://www.linode.com/docs/api/domains/). 
 
 ## Requirements
 
-You must provide your linode API key, which you can generate via your linode profile. If there is a `.linode-key` file in the current directory, it is used, otherwise the `.linode-key` file in your home directory is used.
+You must provide your linode API key, which you can generate via your linode profile [linode console] (https://cloud.linode.com/profile/tokens).
 
 ## Installation
 
 ```
+npm install  @linode/api-v4 
 npm install -g linode-dns-tools
 ```
 
@@ -23,6 +24,23 @@ npm install -g linode-dns-tools
 
 Imports bind-style DNS zone files via the Linode API. Very useful if you've exported one from another hosting service that won't allow Linode's automatic zone export feature.
 This is the case for most cloud services.
+You may have to adapt the export zone file. See e.g. a Google exported zone file importfiles/akamai.test.dns.txt.ori  was changed to fit the program : 
+- IN in the records removed
+- the point after the origin name must be removed on all lines e.g. 
+akamai.test.
+changed to 
+akamai.test 
+- SOA file replaced an put to the first line 
+akamai.test. 21600 IN SOA ns-cloud-d1.googledomains.com. cloud-dns-hostmaster.google.com. 1 21600 3600 259200 300
+changed to 
+akamai.test      3600                    ns23.domaincontrol.com. dns.jomax.net. (
+                                        2022120903
+                                        28800
+                                        7200
+                                        604800
+                                        300
+                                        ) 
+Note that the name server in the SOA record and the NS records are ignored.  
 
 ### Usage
 
