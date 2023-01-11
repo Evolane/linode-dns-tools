@@ -4,7 +4,8 @@
   "type": "module",
   "description": "Tools to update your Linode DNS entries via the Linode API.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "correct": "cp index.js  ./node_modules/@linode/validation/lib/esm/ "
   },
   "repository": {
     "type": "git",

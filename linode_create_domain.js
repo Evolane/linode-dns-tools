@@ -1,6 +1,6 @@
 /*
-Command 
-$ node createdomain.js -f evolane.be.dns.txt 
+Command to create a domain from an adapted 
+$ node linode_create_domain.js -f importfiles/akamai.test.dns.txt -t 9138ebxxxxxxxxxxxx
 akamai.test      3600                    ns23.domaincontrol.com. dns.jomax.net. (
                                         2022120903
                                         28800
@@ -35,10 +35,8 @@ import { setToken, getProfile, getDomain, createDomain } from '@linode/api-v4';
   const argv = await yargs
       .option('filename', { type: 'string', require: true })
       .option('token', { type: 'string', require: true })
-      .option('domainId', { type: 'string', require: true })
       .alias('f', 'filename')
       .alias('t', 'token')
-      .alias('d', 'domainId')
       .argv;
   var input = fs.readFileSync(argv.filename, 'utf8' , error => {
       if (error) throw error;
