@@ -1,6 +1,30 @@
 /*
-Command 
-$ node createdomain.js -f evolane.be.dns.txt 
+Command to crate domain records based on (adapted) exported zone file
+$ node linode_import_domain.js
+Options:
+      --help      Show help                                            [boolean]
+      --version   Show version number                                  [boolean]
+  -f, --filename                                             [string] [required]
+  -t, --token                                                [string] [required]
+  -d, --domainId                                             [string] [required]
+Use the domainId created by the node linode_create_domain.js command
+
+$ node linode_import_domain.js -f importfiles/akamai.test.dns.txt -t 9138ebxxxxxxxxxxxxxxxx -d 1943446
+A _XXX_ 2.17.196.88
+A _XXX_ 2.17.196.107
+MX _XXX_ aspmx.l.google.com.
+MX _XXX_ alt1.aspmx.l.google.com.
+TXT _XXX_ MS=ms72154044
+TXT _XXX_ gfQu7C7xf9q3iIIUdViFCkUKywQ-lqkIL4wOo_4Gevg
+CNAME _XXX_ evolane-ops.edgekey.net.
+Test [object Object]!
+Test [object Object]!
+Test [object Object]!
+Test [object Object]!
+Test [object Object]!
+Test [object Object]!
+Test [object Object]!
+
 akamai.test      3600                    ns23.domaincontrol.com. dns.jomax.net. (
                                         2022120903
                                         28800

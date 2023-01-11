@@ -1,6 +1,15 @@
 /*
-Command to create a domain from an adapted 
+Command to create a domain from an (adapted) exported zone file
+$ node linode_create_domain.js
+Options:
+      --help      Show help                                            [boolean]
+      --version   Show version number                                  [boolean]
+  -f, --filename                                             [string] [required]
+  -t, --token             
+
 $ node linode_create_domain.js -f importfiles/akamai.test.dns.txt -t 9138ebxxxxxxxxxxxx
+Domain id 1943446!
+
 akamai.test      3600                    ns23.domaincontrol.com. dns.jomax.net. (
                                         2022120903
                                         28800
@@ -143,30 +152,6 @@ createDomain( {
       console.error(error);
     });
 
-records.forEach(domainrecfunction)
-    function domainrecfunction(item,id){
-      console.log( `${item.type} _XXX_ ${item.value}`); 
-          var data = {
-            type: item.type,
-            name: item.name,
-            target: item.value.replace(/\.$/, ''),
-            "priority": 50
-          };
-          if (item.type === 'MX') {
-            data.priority = parseInt(item.priority);
-          }
-          if (item.ttl) {
-            data.ttl_sec = parseInt(item.ttl);
-          }
-          // Got id from createdomain
-          createDomainRecord( id, data).then((response) => {
-            //return response.username;
-            var user =  response;
-            console.log( `Test ${response}!`); 
-          }).catch((error) => {
-            console.error(error);
-          });
-    }
     
     
 
