@@ -1,11 +1,10 @@
 # linode-dns-tools
-A tool collection based on the previous api v3  [github](http://github.com/punkave/linode-dns-tools) was adapted to api v4 for creating and importing a DNS domain from an DNS zone export file [github](https://github.com/Evolane/linode-dns-tools ).
-
+2 tools based on the previous api v3  [github](http://github.com/punkave/linode-dns-tools) was adapted to api v4 for creating and importing a DNS domain from an DNS zone export file [github](https://github.com/Evolane/linode-dns-tools ).
 
 
 <a href="http://evolane.eu/"><img src="https://github.com/Evolane/linode-dns-tools/blob/main/logos/logo-evolane.png" align="right" /></a>
 
-A collection of tools for the [linode DNS API](https://www.linode.com/docs/api/domains/). 
+2 tools for the [linode DNS API](https://www.linode.com/docs/api/domains/). 
 
 ## Requirements
 
@@ -41,17 +40,9 @@ const { parse: parseIP, parseCIDR } = pkg;
 
 # The tools
 
-## linode-import-zone-file
-
-Imports bind-style DNS zone files via the Linode API. Very useful if you've exported one from another hosting service that won't allow Linode's automatic zone export feature.
-This is the case for most cloud services.
-You may have to adapt the export zone file. See e.g. a Google exported zone file importfiles/akamai.test.dns.txt.ori  was changed to fit the program : 
-- IN in the records removed
-- the point after the origin name must be removed on all lines e.g. 
-akamai.test.
-changed to 
-akamai.test 
-- SOA file replaced an put to the first line 
+## node linode_create_domain.js -f zonefile -t apitoken
+Creates a Linode DNS domain via the Linode API based on the first record of an zonefile with SOA record ( possibly replaced ) and put to the first line 
+e.g.
 akamai.test. 21600 IN SOA ns-cloud-d1.googledomains.com. cloud-dns-hostmaster.google.com. 1 21600 3600 259200 300
 changed to 
 akamai.test      3600                    ns23.domaincontrol.com. dns.jomax.net. (
@@ -61,21 +52,36 @@ akamai.test      3600                    ns23.domaincontrol.com. dns.jomax.net. 
                                         604800
                                         300
                                         ) 
-Note that the name server in the SOA record and the NS records are ignored.  
+It returns a domainid via a message 
+Domain created with id xxxxxxx   ( Use this number in the “node linode_import_domain.js" step )
+
+## node linode_import_domain.js -f zonefile -t apitoken -d domainid
+
+Imports bind-style DNS zone files via the Linode API. Very useful if you've exported one from another hosting service that won't allow Linode's automatic zone export feature.
+This is the case for most cloud services.
+You may have to adapt the export zone file. See e.g. a Google exported zone file importfiles/akamai.test.dns.txt.ori  was changed to fit the program : 
+- SOA record replaced an put to the first line ( see above)
+- IN in the records removed
+- the point after the origin name must be removed on all lines e.g. 
+akamai.test.
+changed to 
+akamai.test 
+
+Note that the name server in the SOA record and the NS records are ignored as Linode nameservers are automatically added at domain creation time.
+Note that we didn't manage to have a combined linode_create_import_domain.js running. My attempts gave a 404 when passing the domainId to createDomainRecord(domainId, data) from the createDomain step. Anyway it is handier to have the 2 things seperated to correct possible errors in the zone file.
+
 
 ### Usage
 
-```
-linode-import-zone-file zonefile
-```
+- create the domain from the SOA record in the domain :  
+node linode_create_domain.js
+e.g. 
+$ node linode_create_domain.js -f importfiles/akamai.test.dns.txt -t 9138ebxxxxxxxxxxxx Domain created with id1943446   ( Use this number in the “node linode_import_domain.js" step )
 
-It takes a little time depending on how many records you have.
-
-TODO: currently no support for SRV records. Pull requests welcome.
-
-Note that if an error is reported, no records beyond that point are imported.
-
-Runs quietly if nothing is wrong. Use `--verbose` for detailed output.
+- create the other DNS records one by one : 
+node linode_import_domain.js
+e.g. 
+$ node linode_import_domain.js -f importfiles/akamai.test.dns.txt -t 9138ebxxxxxxxxxxxxxxxx -d 1943446 
 
 
 ## About Evolane

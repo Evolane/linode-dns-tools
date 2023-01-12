@@ -147,7 +147,7 @@ createDomain( {
       ttl_sec: parseInt(timing.minimum)
     }).then((response) => {
       var id =  response.id;
-      console.log( `Domain id ${response.id}!`); 
+      console.log( `Domain created with id ${response.id}  ( Use this number in the “node linode_import_domain.js" step )`); 
     }).catch((error) => {
       console.error(error);
     });
