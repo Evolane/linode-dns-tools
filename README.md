@@ -14,29 +14,6 @@ You must provide your linode API key, which you can generate via your linode pro
 
 ```
 npm install linode-dns-tools
-npm run correct 
-
-( npm install -g linode-dns-tools 
-  is not recommended as one still has to correct the @linode/api-v4 module for the ERROR below 
-  So we added the following "correct" command to the package.json scripts that will change an original indec.js file
-    "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1" , 
-    "correct": "cp index.js  ./node_modules/@linode/validation/lib/esm/ "
-  $ ls -l ./node_modules/@linode/validation/lib/esm/index.js*
--rw-r--r--  1 xxxxxxx  staff  40965 Dec 23 10:00 ./node_modules/@linode/validation/lib/esm/index.js
--rw-r--r--  1 xxxxxxx  staff  40805 Dec 23 10:00 ./node_modules/@linode/validation/lib/esm/index.js.ori
-
-ERROR   
-$ node linode_create_import_domain.js -f importfiles/akamai.test.dns.txt -t 9138exxxxxxxxxxxxxxxxxxxx
-file:///Users/xxxxxxx/projects/linode-dns-tools/node_modules/@linode/validation/lib/esm/index.js:219
-import { parse as parseIP, parseCIDR } from "ipaddr.js";
-                           ^^^^^^^^^
-SyntaxError: Named export 'parseCIDR' not found. The requested module 'ipaddr.js' is a CommonJS module, which may not support all module.exports as named exports.
-CommonJS modules can always be imported via the default export, for example using:
-import pkg from 'ipaddr.js';
-const { parse: parseIP, parseCIDR } = pkg;  
-```
-) 
 
 # The tools
 
